@@ -1,6 +1,9 @@
 # Storyteq Backend Challenge
 
-[Stackblitz](https://stackblitz.com/edit/storyteq-backend-challenge)
+[Stackblitz](https://stackblitz.com/edit/storyteq-backend-challenge).
+
+This branch uses the ourosboros principle to burn the array from both ends, we can combine this with
+a sliding window pattern to make the algorithm exponentially faster.
 
 The bese cast is O(1) and the worst is O(n-slicepoint)
 
