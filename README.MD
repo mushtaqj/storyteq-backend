@@ -50,19 +50,17 @@ const shiftedList  = [2, 4, 6, 8, 10];  // Here is the list after it has been sl
 ```
 
 1. Can you identify any edge cases that we need to account for?
+   1. Array is sliced at the first index
+   2. Array is sliced at the last index
 2. Can you explain the orders of growth implications of the algorithm you implemented?
+   1. **The Array is sliced at index zero** : if we have access to the `initialList` then the complexity is O(1), if we don't then this becomes the worst case as algorithm become linear O(n).
+   2. **The Array is sliced at the last index** : Best Peforming O(1)
+   3. **The Array is sliced at a random index in the middle** : O(n-slicepoint).
+   4. If we managed to stick in a hacky binary search till we get find the slice point we can try to get some variation of 0(log N)
+
 3. Suppose our initial list contains 1 million elements, is there a more performant way we can find the answer?
 
 ## Unconditional Truths
 
-1. That the max would always be close to the 'slice' point, find the slice point you got the max in few iterations.
-2. Halving the array will be of little to no consequence, make the algo even slower on the worse case ?.
-3. Sice the 'slice' point can be at any interval it would be incorrect to assume that we can optimize from the middle.
-4. Using binary search can be tricky see point 2.
-
-## Edge cases
-
- 1. If it is zero we can just get the last item
- 2. Duplicate max ?
- 3. Negative numbers ?
- 4. Decimal numbers ?
+1. That the max would always be close to the 'slice' point, find the slice point you got the max in few the fewest possible iterations.
+2. Halving the arrays and checking the first and the last and first items can give an indication from which side we can progress.

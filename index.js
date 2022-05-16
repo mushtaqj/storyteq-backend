@@ -1,6 +1,10 @@
-// Sample 2
-const initialList = [2, 4, 6, 8, 10]; // Here is our initial oredered list
-const shiftedList = [6, 8, 10, 2, 4]; // This is our shifted list
+const {
+  bestCaseDataSet,
+  worseCaseDataSet,
+  normalCaseDataSet,
+} = require("./datasets");
+
+const { initialList, shiftedList } = bestCaseDataSet;
 
 /**
  *
@@ -18,7 +22,6 @@ function findLargestIntIn(numArray, initList = initialList) {
   if (max == firstElInInitList) {
     max = numArray[numArray.length - 1];
   } else {
-
     for (let i = 1; i < numArray.length; i++) {
       const currEl = numArray[i];
       iterationCount++;
@@ -32,7 +35,7 @@ function findLargestIntIn(numArray, initList = initialList) {
       }
     }
   }
-  return { max, iterationCount };
+  return { max, iterationCount, itemsCount: numArray.length };
 }
 
 console.log(findLargestIntIn(shiftedList));
