@@ -1,41 +1,54 @@
 const {
-  bestCaseDataSet,
-  worseCaseDataSet,
   normalCaseDataSet,
+  shiftedInAscendingOrder,
+  shiftedInDescendingOrder,
+  normalCaseDataSetWithSlicePointInBeginning,
+  normalCaseDataSetWithSlicePointInEnd,
 } = require("./datasets");
 
-const { initialList, shiftedList } = bestCaseDataSet;
+const { shiftedList } = normalCaseDataSet;
 
 /**
- *
- * @param {[]} numArray
- * @param {[]} initList optional, passed the default initialList if none given.
- * Not sure if there will be access to both the lists before the processing ,but since it's available
- * tweaked it a bit
+ * What conclusions can we arrive at when :
+ * 1. Last > First =  The Array DEFINETELY is in Ascending order
+ * 2. First > Last =  The Array is in descending order, but can also be shifted in the middle
+ * @param {[]} shiftedNumArray
  * @returns
  */
-function findLargestIntIn(numArray, initList = initialList) {
-  let [max] = numArray;
-  const [firstElInInitList] = initList;
-  let iterationCount = 0;
+function findLargestIntIn(shiftedNumArray) {
+  let [max] = shiftedNumArray;
+  let numOfIterations = 0;
+  let lastDiff, difference;
+  const { length } = shiftedNumArray;
 
-  if (max == firstElInInitList) {
-    max = numArray[numArray.length - 1];
-  } else {
-    for (let i = 1; i < numArray.length; i++) {
-      const currEl = numArray[i];
-      iterationCount++;
+  for (let i = 0, j = length - 1; i < length / 2; i++, j--) {
+    numOfIterations++;
+    const first = shiftedNumArray[i];
+    const last = shiftedNumArray[j];
 
-      const isGreaterThanMax = currEl - max >= 0;
+    lastDiff = difference;
+    difference = first - last;
 
-      if (isGreaterThanMax) {
-        max = currEl;
-      } else {
-        break;
-      }
+    if (difference < 0 && lastDiff < difference) {
+      // Ascending - lastDiff will be ALWAYS lesser than diff
+      max = last;
+      break;
+    } else if (difference > 0 && lastDiff > difference) {
+      // Descending - lastDiff will be ALWAYS greater than diff
+      max = first;
+      break;
+    } else if (difference > 0 && lastDiff > 0) {
+      // Mixed - lastDiff will be always lesser than diff till we reach the slice point
+      max = Math.max(max, first, last);
+    } else if (lastDiff !== undefined) {
+      max = Math.max(max, first, last);
+      break;
     }
+
+    // console.log({ max, first, last, diff: difference, lastDiff });
   }
-  return { max, iterationCount, itemsCount: numArray.length };
+
+  return { max, numOfIterations };
 }
 
 console.log(findLargestIntIn(shiftedList));

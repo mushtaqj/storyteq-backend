@@ -52,13 +52,17 @@ const shiftedList  = [2, 4, 6, 8, 10];  // Here is the list after it has been sl
 1. Can you identify any edge cases that we need to account for?
    1. Array is sliced at the first index
    2. Array is sliced at the last index
+   3. First element is a bigger number and the last element is a smaller number, but this does not mean that the array is
+   is in descending order.
 2. Can you explain the orders of growth implications of the algorithm you implemented?
-   1. **The Array is sliced at index zero** : if we have access to the `initialList` then the complexity is O(1), if we don't then this becomes the worst case as algorithm become linear O(n).
-   2. **The Array is sliced at the last index** : Best Peforming O(1)
-   3. **The Array is sliced at a random index in the middle** : O(n-slicepoint).
+   1. **The Array is sliced at index zero** : then the complexity is O(1) because the array is already in ascending order.
+   2. **The Array is sliced at the last index** : 0(1) because the array is in descending order and can get the last item
+   3. **The Array is sliced at a random index in the middle** : O(n/2-slicepoint).
    4. If we managed to stick in a hacky binary search till we get find the slice point we can try to get some variation of 0(log N)
 
 3. Suppose our initial list contains 1 million elements, is there a more performant way we can find the answer?
+   1. First we can slice the array into half and try to use an algorithm that would perform at 0(Log N),
+   chunking the array into a **sliding window pattern** would be very performant.
 
 ## Unconditional Truths
 

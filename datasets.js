@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 const normalCaseDataSet = {
   initialList: [
@@ -7,15 +7,37 @@ const normalCaseDataSet = {
     104, 105, 106, 107, 108, 200, 202, 220, 230, 330,
   ],
   shiftedList: [
-    100, 102, 103, 104, 105, 106, 107, 108, 200, 202, 220, 230, 330, 1, 3, 7, 8,
-    9, 10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57,
+    102, 103, 104, 105, 106, 107, 108, 200, 202, 220, 230, 330, 1, 3, 7, 8, 9,
+    10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57, 100,
+  ],
+};
+
+const normalCaseDataSetWithSlicePointInBeginning = {
+  initialList: [
+    1, 3, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57, 100, 102, 103,
+    104, 105, 106, 107, 108, 200, 202, 220, 230, 330,
+  ],
+  shiftedList: [
+    13, 15, 17, 19, 21, 22, 25, 55, 57, 100, 102, 103, 104, 105, 106, 107, 108,
+    200, 202, 220, 230, 330, 1, 3, 7, 8, 9, 10, 11,
+  ],
+};
+
+const normalCaseDataSetWithSlicePointInEnd = {
+  initialList: [
+    1, 3, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57, 100, 102, 103,
+    104, 105, 106, 107, 108, 200, 202, 220, 230, 330,
+  ],
+  shiftedList: [
+    200, 202, 220, 230, 330, 1, 3, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 22, 25,
+    55, 57, 100, 102, 103, 104, 105, 106, 107, 108,
   ],
 };
 
 /**
  * Array is already sorted in descending order, so this would be a constant O(n)
  */
-const bestCaseDataSet = {
+const shiftedInDescendingOrder = {
   initialList: [
     1, 3, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57, 100, 102, 103,
     104, 105, 106, 107, 108, 200, 202, 220, 230, 330,
@@ -27,9 +49,11 @@ const bestCaseDataSet = {
 };
 
 /**
- * Array is already sorted in ascending order, Can be the best case alorithm if we use the initialList and worst performing if the list cannot be used for context O(1) or O(n)
+ * Array is already sorted in ascending order,
+ * Can be the best case alorithm if we use the initialList and worst performing
+ * if the list cannot be used for context O(1) or O(n)
  */
-const worseCaseDataSet = {
+const shiftedInAscendingOrder = {
   initialList: [
     1, 3, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 22, 25, 55, 57, 100, 102, 103,
     104, 105, 106, 107, 108, 200, 202, 220, 230, 330,
@@ -42,6 +66,8 @@ const worseCaseDataSet = {
 
 module.exports = {
   normalCaseDataSet,
-  worseCaseDataSet,
-  bestCaseDataSet,
+  normalCaseDataSetWithSlicePointInBeginning,
+  normalCaseDataSetWithSlicePointInEnd,
+  shiftedInAscendingOrder,
+  shiftedInDescendingOrder,
 };
