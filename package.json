@@ -1,0 +1,16 @@
+{
+  "name": "storyteq-backend",
+  "version": "1.0.0",
+  "description": "Code challenge for the backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev" : "nodemon index.js"
+  },
+  "author": "Mushtaq Jameel",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
