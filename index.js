@@ -6,7 +6,8 @@ const shiftedList = [6, 8, 10, 2, 4]; // This is our shifted list
  *
  * @param {[]} numArray
  * @param {[]} initList optional, passed the default initialList if none given.
- * Not sure if this is can be used ,but since is there used to optimize the sequences
+ * Not sure if there will be access to both the lists before the processing ,but since it's available
+ * tweaked it a bit
  * @returns
  */
 function findLargestIntIn(numArray, initList = initialList) {
