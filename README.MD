@@ -5,7 +5,7 @@
 This branch uses the ourosboros principle to burn the array from both ends, we can combine this with
 a sliding window pattern to make the algorithm exponentially faster.
 
-The bese cast is O(1) and the worst is O(n-slicepoint)
+The bese cast is O(1) and the worst is O(n/2-slicepoint)
 
 As you checkout build the project
 
